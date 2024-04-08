@@ -3,19 +3,19 @@
 
 const routes = [
     {
-        path:"/home",
+        path:"/", //把要顯示在網頁一進去的那個路由設定為"/"
         name:"home",
-        components:() => import("../view/home.vue")
+        component:() => import("../view/home.vue")
     },
     {
         path:"/introduce",
         name:"introduce",
-        components:() => import("../view/introduce.vue")
+        component:() => import("../view/introduce.vue")
     },
     {
         path:"/reserve",
         name:"reserve",
-        components:() => import("../view/reserve.vue")
+        component:() => import("../view/reserve.vue")
     },
 ];
 export default routes;
