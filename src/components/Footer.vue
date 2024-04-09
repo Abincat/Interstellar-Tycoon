@@ -4,22 +4,25 @@
         <main>
             <div class="information">
                 <img src="../assets/images/logo-new.png" alt="logoImg">
-                <div class="informationText">
-                    <span>{{ name }}</span>
-                    <span>{{ tel }}</span>
-                    <span>{{ address }}</span>
-                </div>
+                <ul class="informationText">
+                    <li>{{ name }}</li>
+                    <li>{{ tel }}</li>
+                    <li>{{ address }}</li>
+                </ul>
             </div>
             <nav>
                 <div class="community">
-                    <a href="#">
+                    <a href="#" class="facebookHover">
                         <img src="../assets/images/facebook-white.png" alt="facebook">
+                        <img src="../assets/images/facebook-yellow.png" alt="facebookYellow" class="facebookYellow">
                     </a>
-                    <a href="#">
+                    <a href="#" class="instagramHover">
                         <img src="../assets/images/instagram-white.png" alt="instagram">
+                        <img src="../assets/images/instagram-yellow.png" alt="instagramYellow" class="instagramYellow">
                     </a>
-                    <a href="#">
+                    <a href="#" class="youtubeHover">
                         <img src="../assets/images/youtube-white.png" alt="youtube">
+                        <img src="../assets/images/youtube-yellow.png" alt="youtubeYellow" class="youtubeYellow">
                     </a>
                 </div>
                 <div class="linkList">
@@ -88,11 +91,7 @@ export default{
         width: 40px;
         height: 40px;
         padding: 10px;
-        border-radius:50% ;
-    }
-
-    .community img:hover{
-        box-shadow: rgba(255, 255, 255, 0.923) 0px 10px 50px -5px , rgba(255, 208, 78, 0.781) 0px 10px 36px -10px inset;
+        border-radius:50% ; 
     }
 
     .linkList{
@@ -110,8 +109,32 @@ export default{
         color:rgb(255, 208, 78) ;
     }
 
-    span{
+    li{
         display: block;
         font-size: 12px;
+    }
+
+    .facebookHover,
+    .instagramHover,
+    .youtubeHover
+    {
+        position: relative;
+    }
+
+    .facebookYellow,
+    .instagramYellow,
+    .youtubeYellow
+    {
+        position: absolute;
+        top:0;
+        left: 0;
+        opacity: 0;
+    }
+
+    .facebookYellow:hover,
+    .instagramYellow:hover,
+    .youtubeYellow:hover
+    {
+        opacity: 1;
     }
 </style>
