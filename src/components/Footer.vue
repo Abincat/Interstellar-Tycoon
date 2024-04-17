@@ -1,7 +1,7 @@
 
 <template>
     <footer>
-        <main>
+        <div class="footerBlock">
             <div class="information">
                 <img src="../assets/images/logo-new.png" alt="logoImg">
                 <ul class="informationText">
@@ -34,7 +34,7 @@
                     </div>
                 </div>
             </nav>
-        </main>
+        </div>
     </footer>
     
 </template>
@@ -55,9 +55,10 @@ export default{
     footer{
         display: flex;
         justify-content: center;
+        width: 100%;
     }
 
-    main{
+    .footerBlock{
         display: flex;
         width: 80%;
         justify-content:space-between;

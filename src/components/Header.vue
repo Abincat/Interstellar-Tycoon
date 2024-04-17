@@ -1,6 +1,6 @@
 
 <template>
-    <nav>
+    <header>
         <router-link to="/" class="logo">
             <img src="../assets/images/logo-new.png" alt="logoImg">
         </router-link>
@@ -12,7 +12,7 @@
                 <router-link to="reserve" class="linkButton">reserve</router-link>
             </div>
         </div>
-    </nav>
+    </header>
 </template>
 
 <script setup>
@@ -20,21 +20,24 @@
 </script>
 
 <style scoped>
-nav{
+header{
     display:flex;
-    padding: 8px;
     justify-content:space-between;
+    width: 100%;
 }
 
 .logo img{
     width: 100px;
     height: 100px;
+    padding-left: 20px;
+    padding-top: 5px;
 }
 
 .linkButtonList{
     display: flex;
     justify-content: end;
     padding-top: 20px;
+    padding-right: 20px;
 }
 
 .linkButton{

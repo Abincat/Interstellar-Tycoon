@@ -5,9 +5,13 @@
     /* font-weight: <weight>; */
     font-style: normal;
     color: white;
+    
 }
 
 body{
     background-color: rgba(0, 0, 0, 0.915);
+    width: 100%;
+    margin: 0;
+	padding: 0;
 }
 
