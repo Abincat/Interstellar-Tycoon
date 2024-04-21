@@ -1,8 +1,9 @@
 
 <template>
     <section>
+        <!-- <div class="cardAppear" @scroll="cardMove($event)">AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</div> -->
         <!----------- 計畫簡述卡片 ----------->
-        <article class="cardAppear cardAppear" @scroll="cardMove($event)">
+        <article class="cardAppear" @scroll="cardMove($event)">
             <div class="planIntroduceText">
                 <p>地球作為人類的家園，面臨著能源枯竭等重大問題，這不僅對地球生態系統造成嚴重衝擊，也對人類的未來生存提出了嚴峻挑戰。
                 <br/>
@@ -11,11 +12,11 @@
             </div>
             <img src="../assets/images/brokenEarth.jpg" alt="brokenEarth">
         </article>
-        <article class="cardAppear cardAppear" @scroll="cardMove($event)">
+        <article class="cardAppear" @scroll="cardMove($event)">
             <img src="../assets/images/ourPlanet.png" alt="ourPlanet">
             <div class="planIntroduceText">
                 <h2>我們的星球</h2>
-                <p>在我們的星球移居計畫中，我們對於挑選適合居住的星球把關嚴格，以確保居民在太空中有一個安全、舒適的家園。我們進行了多項環境測試和生物調查，以下是我們的把關要點：
+                <p>在我們的星球移居計畫中，我們對於挑選適合居住的星球把關嚴格，以確保居民在太空中有一個安全、舒適的家園。我們進行了多項環境測試和生物調查，並符合<b class="planIntroduceTextMark">HN-AC星球安全認證標章</b>，以下是我們的把關要點：
                 <br/>
                 <br/>
                 <b class="planIntroduceTextMark">解決氧氣問題：</b>在太空移居計畫中，我們利用氧氣製造技術成功地克服了太空環境中氧氣供應的挑戰。透過先進的氧氣生產和循環系統，我們確保居民在太空中擁有充足的氧氣來源，保障居民的健康和安全。
@@ -31,7 +32,7 @@
                 經過以上把關原則的嚴格考量和評估，我們最終確定了一組符合標準的星球，這些星球將成為我們太空移居計畫的重要目的地，為居民提供安全、舒適的居住環境和美好的未來。</p>
             </div>
         </article>
-        <article class="cardAppear cardAppear" @scroll="cardMove($event)">
+        <article class="cardAppear" @scroll="cardMove($event)">
             <div class="planIntroduceText">
                 <h2>先進的太空運輸設備</h2>
                 <p>
@@ -39,11 +40,11 @@
                 <br/><br/>
                 其中，我們設計了多樣性選擇的運輸船體，包括大小不同、功能各異的運輸船型。這些運輸船體配備了先進的引擎和推進系統，能夠在太空中快速穩定地航行。我們特別注重航行軌道的正確性和安全性，使用了最新的導航和控制系統，確保運輸船在航行過程中遵循正確的航道，同時將事故風險降為0％。
                 <br/><br/>
-                我們的太空運輸設備擁有先進的推進器和加速器，能夠在短時間內達到高速航行，從而大大縮短了從地球到目標星球的抵達時間。這些設備不僅速度快，而且安全可靠，經過多次測試和驗證，平均縮短了抵達時間超過150％。這使得居民可以更快速、更舒適地抵達新的家園，開始新的太空生活。</p>
+                我們的太空運輸設備擁有先進的推進器和次光速航行系統，能夠在短時間內達到高速航行，從而大大縮短了從地球到目標星球的抵達時間。這些設備不僅速度快，而且安全可靠，經過多次測試和驗證，平均縮短了抵達時間超過1500％。這使得居民可以更快速、更舒適地抵達新的家園，開始新的太空生活。</p>
             </div>
             <img src="../assets/images/shippingExample.png" alt="shippingExample">
         </article>
-        <article class="cardAppear cardAppear" @scroll="cardMove($event)">
+        <article class="cardAppear" @scroll="cardMove($event)">
             <img src="../assets/images/houseExample.jpg" alt="houseExample">
             <div class="planIntroduceText">
                 <h2>嚴選建材及最新建造技術</h2>
@@ -93,15 +94,28 @@
 <script setup>
 import modemCard from "../components/modemCard.vue"
 
-let cardMove = function(event){
-    let scrollY = window.scrollY
+let cardMove = function(){
+    //先把含有cardAppear的class標籤抓出來,抓出來會是陣列
+    let cardArr = document.querySelectorAll('.cardAppear')
 
-    if(scrollY>=150){
-        document.querySelector('.cardAppear').classList.add('show');
-    }else{
-        document.querySelector('.cardAppear').classList.remove('show');
+    //用for迴圈解陣列資料,讓他變成一筆一筆資料
+    for(let i = 0 ; i < cardArr.length ; i++){
+
+        let windowHight = window.innerHeight //監聽視窗高度
+        let cardTop = cardArr[i].getBoundingClientRect().top //陣列中每一筆資料,用內建函式獲取每一個元素的上邊
+        let cardPoint = 150 //這邊數字當作離視窗的高度值,用來計算
+        
+        if(cardTop < windowHight - cardPoint){
+            cardArr[i].classList.add('show'); //把要出現的元素加上浮現特效的class
+        }else{
+            cardArr[i].classList.remove('show'); //超出視窗高度的就把特效class移除
+        }
     }
 }
+window.addEventListener('scroll',cardMove)
+
+
+
 
 </script>
 
@@ -162,7 +176,7 @@ let cardMove = function(event){
     }
 
     .cardAppear{
-        transition: opacity 0.5s ease;
+        transition: opacity 1.5s ease;
         opacity: 0;
     }
 
